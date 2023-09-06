@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Counter;
+use App\Http\Controllers\Counter as CountController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +16,14 @@ use App\Livewire\Counter;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/home', function(){
     return view('home', ['name' => 'Player 1']);
 });
 
-
-
 Route::get('/counter', Counter::class);
+Route::get('/counter-v2', [CountController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
