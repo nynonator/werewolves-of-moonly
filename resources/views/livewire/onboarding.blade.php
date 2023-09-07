@@ -22,13 +22,12 @@
     </div>
 
     <div class="mt-8">
-
-        <button wire:click="nextStep('step-2')"
-            class="uppercase font-bold @if ($selection == '') bg-[#FFBA2F]/40
-            @else bg-[#FFBA2F] @endif p-4 w-full rounded-lg"
-            @if ($selection == '') disabled @endif>
-            bevestig keuze
-        </button>
+        <form action="@if ($selection == 'verteller') /create_game @elseif ($selection == 'speler') /join_game @endif" method="GET">
+            @csrf
+            <input type="submit" value="Bevestig keuze"
+                class="uppercase font-bold @if ($selection == '') bg-[#FFBA2F]/40
+                @else bg-[#FFBA2F] @endif p-4 w-full rounded-lg"
+                @if ($selection == '') disabled @endif>
+        </form>
     </div>
-
 </div>

@@ -1,16 +1,20 @@
-<x-layout>
-    <p>Game PIN: {{ $game->room_pin }}</p>
-    <p>Players:</p>
-    
-    <div id="players">
+<x-app-layout>
+    <span class="opacity-75 text-xs leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+        tristique ligula turpis, id tincidunt diam feugiat et.</span>
+    <div class="mt-4 flex justify-center flex-col w-full bg-white rounded-lg p-2 mt-10">
+        <span class="text-black text-sm opacity-40">Game pin</span>
+        <span class=" font-bold text-black text-3xl mt-2">{{ $game->room_pin }}</span>
+    </div>
+    <div class="mt-12 flex flex-wrap justify-center" id="players">
         @include('game_players_list')
     </div>
+    <div class="mt-8 w-full">
 
-    @if($player->is_admin)
-        <a href="/game/{{ $game->id }}/{{ $player->id }}/start" class="bg-gray-400 hover:bg-gray-500 px-2 py-1 rounded-sm">Start game!</a>
-    @else
-        <p>Waiting for host to start...</p>
-    @endif
+        <button class="uppercase font-bold bg-[#FFBA2F]/40
+           p-4 w-full rounded-lg">
+            bevestig keuze
+        </button>
+    </div>
 
     <script>
         /* Use javascript to refresh player list */
@@ -32,4 +36,4 @@
             setInterval(check_if_game_started, 2500);
         });
     </script>
-</x-layout>
+</x-app-layout>
