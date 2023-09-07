@@ -6,3 +6,5 @@
         <livewire:onboarding>
     </div>
 </x-app-layout>
+
+
