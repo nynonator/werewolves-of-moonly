@@ -15,8 +15,13 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/create_game', [HomeController::class, 'room']);
-Route::get('/signup', [HomeController::class, 'signup']);
+Route::get('/room', function () {
+    return view('room.index');
+});
+Route::get('/signup', function () {
+    return view('signup.index');
+});
+
 Route::get('/card', [HomeController::class, 'card']);
 Route::get('/gameoverview', [HomeController::class, 'gameoverview']);
 
@@ -24,18 +29,17 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-// Route::get('/create_game', function () {
-//     return view('create-game');
-// });
-// Route::post('/create_game', [GameController::class, 'createGame']);
+Route::get('/create_game', [GameController::class, 'createGame']);
 
 Route::get('/join_game', function () {
-    return view('join_game');
+    return view('signup.index');
 });
-Route::post('/join_game', [GameController::class, 'checkPin']);
-Route::post('/join_game/{game}', [GameController::class, 'joinGame']);Route::get('/game/{game}/{player}/get_players', [GameController::class, 'getPlayers']);
+Route::post('/join_game', [GameController::class, 'joinGame']);
+Route::get('/game/{game}/{player}/get_players', [GameController::class, 'getPlayers']);
+Route::get('/game/{game}/get_players', [GameController::class, 'adminGetPlayers']);
 
 Route::get('/game/{game}/{player}/get_status', [GameController::class, 'getStatus']);
 Route::get('/game/{game}/{player}/view_role', [GameController::class, 'viewRole']);
-Route::get('/game/{game}/{player}/start', [GameController::class, 'startGame']);
+Route::get('/game/{game}/start', [GameController::class, 'startGame']);
 Route::get('/game/{game}/{player}', [GameController::class, 'viewGame']);
+Route::get('/game/{game}', [GameController::class, 'adminViewGame']);
