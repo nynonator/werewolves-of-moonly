@@ -18,8 +18,14 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/create_game', function () {
+    return view('create-game');
+});
 Route::post('/create_game', [GameController::class, 'createGame']);
 
+Route::get('/join_game', function () {
+    return view('join_game');
+});
 Route::post('/join_game', [GameController::class, 'checkPin']);
 Route::post('/join_game/{game}', [GameController::class, 'joinGame']);Route::get('/game/{game}/{player}/get_players', [GameController::class, 'getPlayers']);
 

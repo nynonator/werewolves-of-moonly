@@ -32,7 +32,7 @@ class GameController extends Controller
             ]);
         }
 
-        return view('join_game', [
+        return view('join_game_2', [
             'game' => $game
         ]);
     }

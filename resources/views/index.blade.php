@@ -1,17 +1,13 @@
 <x-layout>
     <div>
-        <form action='/create_game' method='POST'>
+        <form action='/create_game' method='GET'>
             @csrf
-            <label for="name">Name</label>
-            <input name="name"><br>
-            <input type="submit" value="Create game">
+            <input type="submit" value="Verteller">
         </form>
         
-        <form action='/join_game' method='POST'>
+        <form action='/join_game' method='GET'>
             @csrf
-            <label for="game_pin">Game Pin</label>
-            <input name="game_pin" type="number"><br>
-            <input type="submit" value="Join game">
+            <input type="submit" value="Speler">
         </form>
     </div>
 </x-layout>
