@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Counter;
-use App\Http\Controllers\Counter as CountController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GameController;
 
 /*
@@ -17,8 +14,9 @@ use App\Http\Controllers\GameController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/room', [HomeController::class, 'room']);
+Route::get('/', function () {
+    return view('home.index');
+});
 
 Route::get('/create_game', function () {
     return view('create-game');
