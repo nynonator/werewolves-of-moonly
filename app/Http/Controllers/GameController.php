@@ -60,7 +60,7 @@ class GameController extends Controller
             'player' => $player
         ]);
     }
-    
+
     public function getStatus(Game $game, Player $player) {
         foreach($game->players()->get() as $current) {
             if($current->role_id == null) {
@@ -119,7 +119,7 @@ class GameController extends Controller
     }
 
     public function viewRole(Game $game, Player $player) {
-        return view('view_role', [
+        return view('card.index', [
             'game' => $game,
             'player' => $player
         ]);
