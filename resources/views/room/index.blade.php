@@ -1,7 +1,7 @@
 <x-app-layout>
     <span class="opacity-75 text-xs leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
         tristique ligula turpis, id tincidunt diam feugiat et.</span>
-    <div class="mt-4 flex justify-center flex-col w-full bg-white rounded-lg p-2 mt-10">
+    <div class="flex justify-center flex-col w-full bg-white rounded-lg p-2 mt-10">
         <span class="text-black text-sm opacity-40">Game pin</span>
         <span class=" font-bold text-black text-3xl mt-2">6404</span>
     </div>
@@ -19,5 +19,4 @@
             bevestig keuze
         </button>
     </div>
-
 </x-app-layout>

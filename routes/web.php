@@ -14,6 +14,10 @@ use App\Http\Controllers\GameController;
 |
 */
 
+Route::get('/room', [HomeController::class, 'room']);
+Route::get('/signup', [HomeController::class, 'signup']);
+Route::get('/card', [HomeController::class, 'card']);
+
 Route::get('/', function () {
     return view('home.index');
 });

@@ -25,17 +25,15 @@ class HomeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function signup()
     {
-        //
+        return view('signup.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function card()
     {
-        //
+        return view('card.index');
     }
 
     /**
