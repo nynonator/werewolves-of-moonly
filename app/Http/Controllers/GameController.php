@@ -15,29 +15,17 @@ class GameController extends Controller
         $game->room_pin = rand(1000, 9999);
         $game->save();
 
-        $player = new Player;
-        $player->name = $request->name;
-        $player->is_admin = true;
-        $player->game_id = $game->id;
-        $player->save();
-
-        return Redirect::to('/game/' . $game->id . '/' . $player->id);
+        return Redirect::to('/game/' . $game->id);
     }
 
-    public function checkPin(Request $request) {
-        $game = Game::where('room_pin', $request->game_pin)->first();
+    public function joinGame(Request $request) {
+        $game = Game::where('room_pin', $request->room_pin)->first();
         if(!$game) {
             return view('error', [
-                'message' => 'game with pin "' . $request->game_pin . '" does not exist'
+                'message' => 'game with pin "' . $request->room_pin . '" does not exist'
             ]);
         }
 
-        return view('join_game_2', [
-            'game' => $game
-        ]);
-    }
-
-    public function joinGame(Game $game, Request $request) {
         $player = new Player;
         $player->name = $request->name;
         $player->game_id = $game->id;
@@ -54,10 +42,23 @@ class GameController extends Controller
         ]);
     }
 
+    public function adminViewGame(Game $game) {
+        return view('game', [
+            'game' => $game,
+            'player' => null
+        ]);
+    }
+
     public function getPlayers(Game $game, Player $player) {
         return view('game_players_list', [
             'game' => $game,
             'player' => $player
+        ]);
+    }
+
+    public function adminGetPlayers(Game $game) {
+        return view('game_players_list', [
+            'game' => $game,
         ]);
     }
     
@@ -100,13 +101,7 @@ class GameController extends Controller
         }
     }
 
-    public function startGame(Game $game, Player $player) {
-        if(!$player->is_admin) {
-            return view('error', [
-                'message' => 'only the admin can start a game!'
-            ]);
-        }
-
+    public function startGame(Game $game) {
         if($game->players()->count() < 5) {
             return view('error', [
                 'message' => 'cannot start a game with less than 5 players!'
@@ -115,13 +110,19 @@ class GameController extends Controller
 
         $this->assignRoles($game);
 
-        return Redirect::to('/game/' . $game->id . '/' . $player->id . '/view_role');
+        return Redirect::to('/game/' . $game->id . '/view_role');
     }
 
     public function viewRole(Game $game, Player $player) {
         return view('view_role', [
             'game' => $game,
             'player' => $player
+        ]);
+    }
+
+    public function adminViewRoles(Game $game) {
+        return view('admin_view_roles', [
+            'game' => $games
         ]);
     }
 }

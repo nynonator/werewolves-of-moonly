@@ -9,31 +9,49 @@
         @include('game_players_list')
     </div>
     <div class="mt-8 w-full">
-
-        <button class="uppercase font-bold bg-[#FFBA2F]/40
-           p-4 w-full rounded-lg">
-            bevestig keuze
-        </button>
+        @if($player == null)
+            <form action="/game/{{ $game->id }}/start" method="GET"> 
+                <button id="start" disabled="true" class="uppercase font-bold bg-[#FFBA2F] disabled:bg-[#FFBA2F]/40
+                p-4 w-full rounded-lg">
+                    Start
+                </button>
+            </form>
+        @endif
     </div>
 
     <script>
         /* Use javascript to refresh player list */
         function refresh_players_list() {
-            $("#players").load("/game/{{ $game->id }}/{{ $player->id }}/get_players");
+            @if($player == null) 
+                $("#players").load("/game/{{ $game->id }}/get_players", function() {
+                    if($("#players > *").length < 5) {
+                        $("#start").prop("disabled", true);
+                    } else {
+                        $("#start").prop("disabled", false);
+                    }
+                });
+
+            @else
+                $("#players").load("/game/{{ $game->id }}/{{ $player->id }}/get_players"); 
+            @endif
         }
 
-        async function check_if_game_started() {
-            const data = await fetch('/game/{{ $game->id }}/{{ $player->id }}/get_status');
-            const json = await data.json();
+        @if($player != null)
+            async function check_if_game_started() {
+                const data = await fetch('/game/{{ $game->id }}/{{ $player->id }}/get_status');
+                const json = await data.json();
 
-            if(json.status != 'lobby') {
-                window.location = '/game/{{ $game->id }}/{{ $player->id }}/view_role';
+                if(json.status != 'lobby') {
+                    window.location = '/game/{{ $game->id }}/{{ $player->id }}/view_role';
+                }
             }
-        }
+        @endif
 
         document.addEventListener("DOMContentLoaded", () => {
             setInterval(refresh_players_list, 2500);
-            setInterval(check_if_game_started, 2500);
+            @if($player != null)
+                setInterval(check_if_game_started, 2500);
+            @endif            
         });
     </script>
 </x-app-layout>
