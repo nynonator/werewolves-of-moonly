@@ -28,9 +28,9 @@ Route::get('/home', function(){
 Route::get('/counter', Counter::class);
 Route::get('/counter-v2', [CountController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 Route::post('/create_game', [GameController::class, 'createGame']);
 
