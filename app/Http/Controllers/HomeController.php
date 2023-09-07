@@ -17,9 +17,9 @@ class HomeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function room()
     {
-        //
+        return view('room.index');
     }
 
     /**
