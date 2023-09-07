@@ -23,6 +23,9 @@ Route::get('/home', function(){
 
 Route::get('/', [HomeController::class, 'index']);
 
+Route::get('/create_game', function () {
+    return view('create-game');
+});
 Route::post('/create_game', [GameController::class, 'createGame']);
 
 Route::get('/join_game', function () {
