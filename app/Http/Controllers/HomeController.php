@@ -30,12 +30,10 @@ class HomeController extends Controller
         return view('signup.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function card()
     {
-        //
+        return view('card.index');
     }
 
     /**

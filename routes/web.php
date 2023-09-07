@@ -20,6 +20,7 @@ use App\Http\Controllers\GameController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/room', [HomeController::class, 'room']);
 Route::get('/signup', [HomeController::class, 'signup']);
+Route::get('/card', [HomeController::class, 'card']);
 
 Route::post('/create_game', [GameController::class, 'createGame']);
 
