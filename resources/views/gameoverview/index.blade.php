@@ -1,5 +1,5 @@
 <x-app-layout>
     <div>
-        <livewire:gameoverview>
+        @livewire("gameoverview", [$game])
     </div>
 </x-app-layout>

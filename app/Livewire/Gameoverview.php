@@ -3,10 +3,13 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use app\Models\Game;
 
 class Gameoverview extends Component
 {
     public $selection = '';
+
+    public $game = null;
 
     public $currentStep = 0;
 
@@ -24,5 +27,10 @@ class Gameoverview extends Component
     public function render()
     {
         return view('livewire.gameoverview');
+    }
+
+    public function mount(Game $game)
+    {
+        $this->game = $game;
     }
 }
