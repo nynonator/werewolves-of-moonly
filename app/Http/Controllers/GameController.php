@@ -122,7 +122,7 @@ class GameController extends Controller
 
     public function adminViewRoles(Game $game) {
         return view('admin_view_roles', [
-            'game' => $games
+            'game' => $game
         ]);
     }
 }

@@ -12,6 +12,7 @@ class Gameoverview extends Component
 
     public $colors = ['bg-yellow-400', 'bg-cyan-500', 'bg-rose-500'];
     public $players = ['player1', 'player2', 'player3'];
+    public $game;
 
     public function save($value) {
         $this->selection = $value;
