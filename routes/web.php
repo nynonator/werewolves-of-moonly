@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::post('/create_game', [GameController::class, 'createGame']);
+
+Route::post('/join_game', [GameController::class, 'checkPin']);
+Route::post('/join_game/{game}', [GameController::class, 'joinGame']);Route::get('/game/{game}/{player}/get_players', [GameController::class, 'getPlayers']);
+
+Route::get('/game/{game}/{player}/get_status', [GameController::class, 'getStatus']);
+Route::get('/game/{game}/{player}/view_role', [GameController::class, 'viewRole']);
+Route::get('/game/{game}/{player}/start', [GameController::class, 'startGame']);
+Route::get('/game/{game}/{player}', [GameController::class, 'viewGame']);

@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('players', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->boolean('is_admin');
-            $table->foreignId('role_id');
+            $table->foreignId('role_id')->nullable();
             $table->foreignId('game_id');
             $table->timestamps();
         });
