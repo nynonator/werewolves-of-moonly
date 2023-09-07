@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +23,11 @@ Route::get('/signup', function () {
 });
 
 Route::get('/card', [HomeController::class, 'card']);
+Route::get('/gameoverview', [HomeController::class, 'gameoverview']);
 
 Route::get('/', function () {
     return view('home.index');
-}); 
+});
 
 Route::get('/create_game', [GameController::class, 'createGame']);
 
