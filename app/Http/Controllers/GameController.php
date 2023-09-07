@@ -15,13 +15,7 @@ class GameController extends Controller
         $game->room_pin = rand(1000, 9999);
         $game->save();
 
-        $player = new Player;
-        $player->name = $request->name;
-        $player->is_admin = true;
-        $player->game_id = $game->id;
-        $player->save();
-
-        return Redirect::to('/game/' . $game->id . '/' . $player->id);
+        return view('room.index');
     }
 
     public function checkPin(Request $request) {
@@ -53,6 +47,7 @@ class GameController extends Controller
             'player' => $player
         ]);
     }
+
 
     public function getPlayers(Game $game, Player $player) {
         return view('game_players_list', [

@@ -15,18 +15,19 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/room', [HomeController::class, 'room']);
+Route::get('/create_game', [HomeController::class, 'room']);
 Route::get('/signup', [HomeController::class, 'signup']);
 Route::get('/card', [HomeController::class, 'card']);
+Route::get('/gameoverview', [HomeController::class, 'gameoverview']);
 
 Route::get('/', function () {
     return view('home.index');
 });
 
-Route::get('/create_game', function () {
-    return view('create-game');
-});
-Route::post('/create_game', [GameController::class, 'createGame']);
+// Route::get('/create_game', function () {
+//     return view('create-game');
+// });
+// Route::post('/create_game', [GameController::class, 'createGame']);
 
 Route::get('/join_game', function () {
     return view('join_game');
