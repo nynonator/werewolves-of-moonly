@@ -17,20 +17,11 @@ use App\Http\Controllers\GameController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/home', function(){
     return view('home', ['name' => 'Player 1']);
 });
 
-Route::get('/counter', Counter::class);
-Route::get('/counter-v2', [CountController::class, 'index']);
 Route::get('/', [HomeController::class, 'index']);
-// Route::get('/', function () {
-//     return view('index');
-// });
 
 Route::post('/create_game', [GameController::class, 'createGame']);
 
