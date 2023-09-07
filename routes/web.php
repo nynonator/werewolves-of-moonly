@@ -17,11 +17,8 @@ use App\Http\Controllers\GameController;
 |
 */
 
-Route::get('/home', function(){
-    return view('home', ['name' => 'Player 1']);
-});
-
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/room', [HomeController::class, 'room']);
 
 Route::get('/create_game', function () {
     return view('create-game');
