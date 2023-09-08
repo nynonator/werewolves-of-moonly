@@ -25,8 +25,8 @@ class Card extends Component
     public function mount(Player $player)
     {
         $role = $player->role()->first();
-        $this->cardName = $role->name;
-        $this->cardDescription = $role->description;
-        $this->imageUrl = $role->image;
+        $this->cardName = $role->name; 
+        $this->cardDescription = $role->description; 
+        $this->imageUrl = $role->image; 
     }
 }

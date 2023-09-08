@@ -91,7 +91,10 @@ class GameController extends Controller
         foreach($roles as $role) {
             $amount = floor($playerCount * $role->percentage);
 
+            if($role->max != null && $amount > $role->max) 
+            
             for($i = 0; $i < $amount; $i++) { // assign as many players as needed
+                
                 $player = Player::find(array_pop($players));
 
                 $player->role_id = $role->id;
