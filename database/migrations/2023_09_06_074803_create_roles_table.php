@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('image');
             $table->float('percentage');
+            $table->integer('max')->nullable();
             $table->timestamps();
         });
     }
