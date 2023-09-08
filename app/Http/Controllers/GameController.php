@@ -10,6 +10,8 @@ use App\Models\Role;
 
 class GameController extends Controller
 {
+    public $colors = ['#FFBA2F', '#ED4C78', '#3DC1CC'];
+
     public function createGame(Request $request) {
         $game = new Game;
         $game->room_pin = rand(1000, 9999);
@@ -38,30 +40,34 @@ class GameController extends Controller
     public function viewGame(Game $game, Player $player) {
         return view('game', [
             'game' => $game,
-            'player' => $player
+            'player' => $player,
+            'colors' => $this->colors,
         ]);
     }
 
     public function adminViewGame(Game $game) {
         return view('game', [
             'game' => $game,
-            'player' => null
+            'player' => null,
+            'colors' => $this->colors
         ]);
     }
 
     public function getPlayers(Game $game, Player $player) {
         return view('game_players_list', [
             'game' => $game,
-            'player' => $player
+            'player' => $player,
+            'colors' => $this->colors
         ]);
     }
 
     public function adminGetPlayers(Game $game) {
         return view('game_players_list', [
             'game' => $game,
+            'colors' => $this->colors
         ]);
     }
-    
+
     public function getStatus(Game $game, Player $player) {
         foreach($game->players()->get() as $current) {
             if($current->role_id == null) {
@@ -119,13 +125,23 @@ class GameController extends Controller
     public function viewRole(Game $game, Player $player) {
         return view('card.index', [
             'game' => $game,
-            'player' => $player
+            'player' => $player,
+            'colors' => $this->colors
+        ]);
+    }
+
+    public function adminViewRole(Game $game, Player $player) {
+        return view('adminviewrole.index', [
+            'game' => $game,
+            'player' => $player,
+            'colors' => $this->colors
         ]);
     }
 
     public function adminViewRoles(Game $game) {
         return view('gameoverview.index', [
-            'game' => $game
+            'game' => $game,
+            'colors' => $this->colors
         ]);
     }
 }

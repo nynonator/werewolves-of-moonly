@@ -30,6 +30,7 @@ Route::get('/game/{game}/get_players', [GameController::class, 'adminGetPlayers'
 
 Route::get('/game/{game}/{player}/get_status', [GameController::class, 'getStatus']);
 Route::get('/game/{game}/{player}/view_role', [GameController::class, 'viewRole']);
+Route::get('/game/{game}/{player}/adminviewrole', [GameController::class, 'adminViewRole']);
 Route::get('/game/{game}/start', [GameController::class, 'startGame']);
 Route::get('/game/{game}/view_role', [GameController::class, 'adminViewRoles']);
 Route::get('/game/{game}/{player}', [GameController::class, 'viewGame']);

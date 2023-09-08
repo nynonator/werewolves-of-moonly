@@ -12,9 +12,7 @@ class Gameoverview extends Component
     public $game = null;
 
     public $currentStep = 0;
-
-    public $colors = ['bg-yellow-400', 'bg-cyan-500', 'bg-rose-500'];
-    public $players = ['player1', 'player2', 'player3'];
+    public $colors = ['#FFBA2F', '#ED4C78', '#3DC1CC'];
 
     public function save($value) {
         $this->selection = $value;
