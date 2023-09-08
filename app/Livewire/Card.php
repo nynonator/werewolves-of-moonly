@@ -11,6 +11,8 @@ class Card extends Component
     public $cardDescription = null; 
     public $imageUrl = null;
     public $cardOpen = false;
+    public $player = null;
+    public $requestedByAdmin = false;
 
     public function toggleCard() {
         $this->cardOpen = !$this->cardOpen;
