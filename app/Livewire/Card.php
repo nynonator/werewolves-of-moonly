@@ -8,11 +8,9 @@ use App\Models\Player;
 class Card extends Component
 {
     public $cardName = null;
-    public $cardDescription = null;
+    public $cardDescription = null; 
     public $imageUrl = null;
     public $cardOpen = false;
-    public $player;                  ;
-    public $requestedByAdmin = false;
 
     public function toggleCard() {
         $this->cardOpen = !$this->cardOpen;
@@ -20,7 +18,15 @@ class Card extends Component
 
     public function render()
     {
-        return view('livewire.card', ['player'=>$this->player]);
+        return view('livewire.card');
+    }
+
+    public function mount(Player $player)
+    {
+        $role = $player->role()->first();
+        $this->cardName = $role->name; 
+        $this->cardDescription = $role->description; 
+        $this->imageUrl = $role->image; 
     }
 
     public function mount(Player $player)
