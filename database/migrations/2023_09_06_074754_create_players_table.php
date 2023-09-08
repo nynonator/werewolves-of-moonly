@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('is_admin');
             $table->foreignId('role_id')->nullable();
             $table->foreignId('game_id');
+            $table->string('color');
             $table->timestamps();
         });
     }

@@ -4,7 +4,8 @@
     </span>
     <div class="mt-12 flex flex-wrap justify-center">
         @foreach ($game->players()->get() as $player)
-            <span class="bg-[{{ $colors[rand(0, 2)] }}] p-4 rounded-full px-8 m-2 @if ($selection == $player->id) border-4 border-white @endif"
+        <span style="background-color:{{ $player->color }}" class="p-4 rounded-full px-8 m-2
+             @if ($selection == $player->id) border-4 border-white @endif"
                 wire:click="save('{{ $player->id }}')">{{ $player->name }}</span>
         @endforeach
     </div>
