@@ -61,7 +61,7 @@ class GameController extends Controller
             'game' => $game,
         ]);
     }
-
+    
     public function getStatus(Game $game, Player $player) {
         foreach($game->players()->get() as $current) {
             if($current->role_id == null) {
@@ -121,7 +121,7 @@ class GameController extends Controller
     }
 
     public function adminViewRoles(Game $game) {
-        return view('admin_view_roles', [
+        return view('gameoverview.index', [
             'game' => $game
         ]);
     }

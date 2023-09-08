@@ -1,5 +1,5 @@
 <x-app-layout>
     <div>
-        <livewire:card :player="$player"/>
+        @livewire("card", [$player])
     </div>
 </x-app-layout>
