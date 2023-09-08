@@ -4,19 +4,26 @@
     </span>
     <div class="mt-12 flex flex-wrap justify-center">
         @foreach ($game->players()->get() as $player)
-        <span style="background-color:{{ $player->color }}" class="p-4 rounded-full px-8 m-2
+            <span style="background-color:{{ $player->color }}"
+                class="p-4 rounded-full px-8 m-2
              @if ($selection == $player->id) border-4 border-white @endif"
                 wire:click="save('{{ $player->id }}')">{{ $player->name }}</span>
         @endforeach
     </div>
     <div class="mt-8 w-full">
-
-        <a href="/game/{{ $game->id }}/{{ $selection }}/adminviewrole"
-            class="uppercase block font-bold @if ($selection == '') bg-[#FFBA2F]/40
+        <form action="/game/{{ $game->id }}/{{ $selection }}/adminviewrole" method="GET">
+            <input type="submit" value="Bevestig keuze"
+                class="uppercase font-bold @if ($selection == '') bg-[#FFBA2F]/40
+                @else bg-[#FFBA2F] @endif p-4 w-full rounded-lg"
+                @if ($selection == '') disabled @endif>
+        </form>
+        {{-- <button @if ($selection == '') disabled @endif>
+            <a href="/game/{{ $game->id }}/{{ $selection }}/adminviewrole"
+                class="uppercase block font-bold @if ($selection == '') bg-[#FFBA2F]/40
         @else bg-[#FFBA2F] @endif
-           p-4 w-full rounded-lg"
-            @if ($selection == '') disabled @endif>
-            bevestig keuze
-        </a>
+           p-4 w-full rounded-lg">
+                bevestig keuze
+            </a>
+        </button> --}}
     </div>
 </div>
