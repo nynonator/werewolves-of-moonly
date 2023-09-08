@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Game;
 use App\Models\Role;
+use Illuminate\Support\Collection;
 
 class GameController extends Controller
 {
@@ -28,10 +29,15 @@ class GameController extends Controller
             ]);
         }
 
+        $colors = ["#ED4C78", "#3DC1CC", "#ED4C78", "#FFBA2F"];
+        $colorCollection = new Collection($colors);
+
+
         $player = new Player;
         $player->name = $request->name;
         $player->game_id = $game->id;
         $player->is_admin = false;
+        $player->color = $colorCollection->random();
         $player->save();
 
         return Redirect::to('/game/' . $game->id . '/' . $player->id);
@@ -91,8 +97,8 @@ class GameController extends Controller
         foreach($roles as $role) {
             $amount = floor($playerCount * $role->percentage);
 
-            if($role->max != null && $amount > $role->max) 
-            
+            // if($role->max != null && $amount > $role->max) 
+
             for($i = 0; $i < $amount; $i++) { // assign as many players as needed
                 
                 $player = Player::find(array_pop($players));

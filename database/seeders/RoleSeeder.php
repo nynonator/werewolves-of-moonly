@@ -20,21 +20,23 @@ class RoleSeeder extends Seeder
                 'name' => 'Astronaut',
                 'description' => 'Jouw enige wapens zijn het vermogen, om het gedrag van andere astronauten te analyseren en zodoende aliens te identificeren, en de overtuigingskracht, die nodig is om te voorkomen dat een onschuldige astronauten veroordeeld wordt.',
                 'image' => '/images/astronaut.png',
-                'percentage' => 0
+                'percentage' => 0,
+                'max' => null
             ],
             [
                 'id' => 2,
                 'name' => 'Alien',
                 'description' => 'Iedere nacht verslinden zij een astronaut. Overdag proberen zij hun nachtelijke gedaante te verbergen en zo aan de wraak van de astronauten te ontsnappen.',               
                 'image' => '/images/alien.png',
-                'percentage' => 0.20
+                'percentage' => 0.20,
+                'max' => null
             ],
             [
                 'id' => 3,
                 'name' => 'Heks',
                 'description' => 'Zij kan twee buitengewoon potente toverdrankjes brouwen: levenselixir en vergif. De heks mag beide toverdranken in dezelfde nacht toedienen. Zij mag de toverdranken niet aan dezelfde speler geven. Dit kan betekenen, dat er de volgende morgen géén, één, of twee doden te betreuren zijn.',
                 'image' => '/images/heks.png',
-                'percentage' => 0.15,
+                'percentage' => 0.09,
                 'max' => 1
             ],
             [
