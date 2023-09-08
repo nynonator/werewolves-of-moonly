@@ -11,6 +11,8 @@ class Card extends Component
     public $cardDescription = null;
     public $imageUrl = null;
     public $cardOpen = false;
+    public $player;                  ;
+    public $requestedByAdmin = false;
 
     public function toggleCard() {
         $this->cardOpen = !$this->cardOpen;
@@ -18,7 +20,7 @@ class Card extends Component
 
     public function render()
     {
-        return view('livewire.card');
+        return view('livewire.card', ['player'=>$this->player]);
     }
 
     public function mount(Player $player)
