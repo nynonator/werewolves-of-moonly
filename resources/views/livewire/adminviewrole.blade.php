@@ -4,9 +4,9 @@
         <p class="opacity-75 mt-2 text-xs leading-relaxed"> {{ $cardDescription }} </p>
         <img class="mt-4" src="{{ asset($imageUrl) }}" />
     </div>
-    <div class="mt-8  bg-[#FFBA2F] p-4 w-full rounded-lg">
-        <a href="/game/{{ $game_id }}/view_role" class="uppercase font-bold">
+    <a href="/game/{{ $game_id }}/view_role" class="uppercase font-bold">
+        <div class="mt-8  bg-[#FFBA2F] p-4 w-full rounded-lg">
             terug
-        </a>
-    </div>
+        </div>
+    </a>
 </div>
